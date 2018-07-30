@@ -1,25 +1,15 @@
-#include <iostream>
-
-void  print_range(int lo, int hi)
-{
-	if (lo > hi)
-	{
-		print_range(hi, lo);
-		return;
+#include<iostream>
+#define glub(a,b) a ## b
+int main() {
+	//std::glub(c, out) << "test";
+	int first = 0, second = 0;
+	std::cout << "please input two numbers:" << std::endl;
+	std::cin >> first >> second;
+	while (first > second? first - second: second - first) {
+		int outputnum = first > second ? ++second : ++first;
+		std::cout << outputnum << std::endl;
 	}
-	while (lo <= hi)
-	{
-		std::cout << lo << std::endl;
-		++lo;
-	}
-}
-
-int main()
-{
-	int low, high;
-	std::cout << "please input two numbers : " << std::endl;
-	std::cin >> low >> high;
-
-	print_range(low, high);
+	std::cin.ignore();
+	std::cin.ignore();
 	return 0;
 }
