@@ -1,23 +1,15 @@
-#include <iostream>
-#include <vector>
+int main() {
+	//std::glub(c, out) << "test";
+	vector<int> vec1 = { 0,1,1,2 }, vec2 = { 3, 5, 8 ,10,0, 1, 1, 2 };
+	int i = 0;
+	for (auto it = vec2.begin(); it != vec2.end();++it) {
+		if (i == vec1.size()) break;
+		if (*it == vec1[i]) ++i;
+	}
+	i == vec1.size() ? cout << "true" << endl : cout << "false" << endl;
 
-using std::cout; using std::vector;
 
-bool is_prefix(const vector<int>& lhs, const vector<int>& rhs)
-{
-	if (lhs.size() > rhs.size())
-		return is_prefix(rhs, lhs);
-	for (unsigned i = 0; i != lhs.size(); ++i)
-		if (lhs[i] != rhs[i]) 
-			return false;
-	return true;
-}
-
-int main()
-{
-	vector<int> l{ 0, 1, 1, 2 };
-	vector<int> r{ 0, 1, 1, 2, 3, 5, 8 };
-	cout << (is_prefix(r, l) ? "yes\n" : "no\n");
-
+	std::cin.ignore();
+	std::cin.ignore();
 	return 0;
 }
