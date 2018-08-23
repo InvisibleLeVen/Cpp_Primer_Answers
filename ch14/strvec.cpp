@@ -96,34 +96,13 @@ void StrVec::range_initialize(const std::string* first, const std::string* last)
 
 bool operator==(const StrVec & strv1, const StrVec & strv2)
 {
-	if (strv1.size() == strv2.size())
-	{
-		for (auto it = strv1.elements, it2 = strv2.elements; it != strv1.first_free; it++, it2++)
-		{
-			if (*it == *it2)
-				continue;
-			else
-				return false;
-		}
-		return true;
-	}
-	else 
-		return false;
+	if (strv1.size() != strv2.size())	return false;
+	for (auto it = strv1.elements, it2 = strv2.elements; it != strv1.first_free; it++, it2++)
+		if (*it != *it2) return false;
+	return true;
 }
 
 bool operator!=(const StrVec & strv1, const StrVec & strv2)
 {
-	if (strv1.size() == strv2.size())
-	{
-		for (auto it = strv1.elements, it2 = strv2.elements; it != strv1.first_free; it++, it2++)
-		{
-			if (*it == *it2)
-				continue;
-			else
-				return true;
-		}
-		return false;
-	}
-	else
-		return true;
+	return !(strv1 == strv2);
 }
