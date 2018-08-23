@@ -131,6 +131,7 @@ istream& operator>>(istream& in, Sales_data& s)
 ## 练习14.16
 
 > 为你的 StrBlob 类、StrBlobPtr 类、StrVec 类和 String 类分别定义相等运算符和不相等运算符。
+StrBlob、StrBlobPtr[hpp](PointClass.h)  StrVec[hpp](strvec.h)|[cpp](strvec.cpp) String[hpp](mystring.h)|[cpp](mystring.cpp)
 
 ## 练习14.17
 
