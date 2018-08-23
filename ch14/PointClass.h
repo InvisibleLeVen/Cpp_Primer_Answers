@@ -130,12 +130,12 @@ bool operator!=(const StrBlob & strb1, const StrBlob &strb2)
 
 bool operator==(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
 {
-	return sbp1.curr == sbp2.curr && sbp1.deref == sbp2.deref;
+	return sbp1.curr == sbp2.curr && sbp1.wptr.lock() == sbp2.wptr.lock();
 }
 
 bool operator!=(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
 {
-	return sbp1.curr != sbp2.curr && sbp1.deref != sbp2.deref;
+	return !(sbp1 == sbp2);
 }
 
 #endif
