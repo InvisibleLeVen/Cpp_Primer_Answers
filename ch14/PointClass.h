@@ -15,6 +15,10 @@ class StrBlob
 {
 	friend bool operator==(const StrBlob&,const StrBlob&);
 	friend bool operator!=(const StrBlob&, const StrBlob&);
+	friend bool operator>(const StrBlob&, const StrBlob&);
+	friend bool operator>=(const StrBlob&, const StrBlob&);
+	friend bool operator<(const StrBlob&, const StrBlob&);
+	friend bool operator<=(const StrBlob&, const StrBlob&);
 public:
 	using size_type = vector<string>::size_type;
 	friend class StrBlobPtr;
@@ -68,15 +72,14 @@ private:
 private:
 	std::shared_ptr<vector<string>> data;
 };
-bool operator==(const StrBlob&, const StrBlob&);
-bool operator!=(const StrBlob&, const StrBlob&);
-
-
 class StrBlobPtr
 {
 	friend bool operator==(const StrBlobPtr&, const StrBlobPtr&);
 	friend bool operator!=(const StrBlobPtr&, const StrBlobPtr&);
-
+	friend bool operator<(const StrBlobPtr&, const StrBlobPtr&);
+	friend bool operator<=(const StrBlobPtr&, const StrBlobPtr&);
+	friend bool operator>(const StrBlobPtr&, const StrBlobPtr&);
+	friend bool operator>=(const StrBlobPtr&, const StrBlobPtr&);
 public:
 	StrBlobPtr() :curr(0) {}
 	StrBlobPtr(StrBlob &a, size_t sz = 0) :wptr(a.data), curr(sz) {}
@@ -105,8 +108,6 @@ private:
 	size_t curr;
 };
 
-bool operator==(const StrBlobPtr&, const StrBlobPtr&);
-bool operator!=(const StrBlobPtr&, const StrBlobPtr&);
 
 
 StrBlobPtr StrBlob::begin()
@@ -125,18 +126,49 @@ bool operator==(const StrBlob & strb1, const StrBlob & strb2)
 
 bool operator!=(const StrBlob & strb1, const StrBlob &strb2)
 {
-	return strb1.data != strb2.data ? true : false;
+	return !(strb1 == strb2);
 }
+bool operator<(const StrBlob & strb1, const StrBlob &strb2)
+{
+	return *strb1.data < *strb2.data;
+}
+bool operator<=(const StrBlob & strb1, const StrBlob &strb2)
+{
+	return !(strb1 > strb2);
+}
+bool operator>(const StrBlob & strb1, const StrBlob &strb2)
+{
+	return  strb2 < strb1;
+}
+bool operator>=(const StrBlob & strb1, const StrBlob &strb2)
+{
+	return !(strb1 < strb2);
+}
+
 
 bool operator==(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
 {
 	return sbp1.curr == sbp2.curr && sbp1.wptr.lock() == sbp2.wptr.lock();
 }
-
 bool operator!=(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
 {
 	return !(sbp1 == sbp2);
 }
-
+bool operator<(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
+{
+	return (sbp1.wptr.lock() < sbp2.wptr.lock()) && (sbp1.curr < sbp2.curr);
+}
+bool operator<=(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
+{
+	return !(sbp1>sbp2);
+}
+bool operator>(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
+{
+	return sbp2 < sbp1;
+}
+bool operator>=(const StrBlobPtr &sbp1, const StrBlobPtr &sbp2)
+{
+	return !(sbp1 < sbp2);
+}
 #endif
 
