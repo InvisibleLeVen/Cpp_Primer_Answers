@@ -81,7 +81,6 @@ std::ostream & operator<<(std::ostream & os,const String& str)
 	return os;
 }
 
-
 bool operator==(const String & S1, const String & S2)
 {
 	std::string s1(S1.elements, S1.end);
@@ -92,5 +91,23 @@ bool operator==(const String & S1, const String & S2)
 bool operator!=(const String & S1, const String & S2)
 {
 	return !(S1 == S2);
+}
+bool operator<(const String & S1, const String & S2)
+{
+	std::string s1(S1.elements, S1.end);
+	std::string s2(S2.elements, S2.end);
+	return s1 < s2;
+}
+bool operator<=(const String & S1, const String & S2)
+{
+	return !(S1 > S2);
+}
+bool operator>(const String & S1, const String & S2)
+{
+	return S2 < S1;
+}
+bool operator>=(const String & S1, const String & S2)
+{
+	return !(S1 < S2);
 }
 
