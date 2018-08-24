@@ -8,6 +8,10 @@ class String
 	friend std::ostream& operator<<(std::ostream &, const String &);
 	friend bool operator==(const String &, const String &);
 	friend bool operator!=(const String &, const String &);
+	friend bool operator<(const String &, const String &);
+	friend bool operator<=(const String &, const String &);
+	friend bool operator>(const String &, const String &);
+	friend bool operator>=(const String &, const String &);
 public:
 	String() :String("") {}
 	String(const char *);
@@ -34,5 +38,8 @@ private:
 std::ostream& operator<<(std::ostream &, const String &);
 bool operator==(const String &, const String &);
 bool operator!=(const String &, const String &);
-
+bool operator<(const String &, const String &);
+bool operator<=(const String &, const String &);
+bool operator>(const String &, const String &);
+bool operator>=(const String &, const String &);
 #endif
