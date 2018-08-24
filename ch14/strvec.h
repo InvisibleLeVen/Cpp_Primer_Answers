@@ -8,6 +8,10 @@ class StrVec
 {
 	friend bool operator==(const StrVec &, const StrVec &);
 	friend bool operator!=(const StrVec &, const StrVec &);
+	friend bool operator<(const StrVec &, const StrVec &);
+	friend bool operator<=(const StrVec &, const StrVec &);
+	friend bool operator>(const StrVec &, const StrVec &);
+	friend bool operator>=(const StrVec &, const StrVec &);
 
 public:
 	StrVec() :elements(nullptr), first_free(nullptr), cap(nullptr) {}
@@ -16,6 +20,7 @@ public:
 	StrVec(std::initializer_list<std::string>);//ex13.40
 	StrVec& operator=(const StrVec&);
 	StrVec& operator=(StrVec &&);
+	StrVec& operator=(const std::initializer_list<std::string>&);
 	~StrVec();
 
 	void push_back(const std::string&);
@@ -40,6 +45,9 @@ private:
 };
 bool operator==(const StrVec &, const StrVec &);
 bool operator!=(const StrVec &, const StrVec &);
-
+bool operator<(const StrVec &, const StrVec &);
+bool operator<=(const StrVec &, const StrVec &);
+bool operator>(const StrVec &, const StrVec &);
+bool operator>=(const StrVec &, const StrVec &);
 
 #endif
