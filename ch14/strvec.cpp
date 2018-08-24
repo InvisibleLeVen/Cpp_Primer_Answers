@@ -41,6 +41,12 @@ StrVec& StrVec::operator=(StrVec && sv) {
 	return *this;
 }
 
+StrVec & StrVec::operator=(const std::initializer_list<std::string>& l)
+{
+	range_initialize(l.begin(), l.end());
+	return *this;
+}
+
 StrVec::StrVec(const StrVec& rhs)
 {
 	auto newdata = alloc_n_copy(rhs.begin(), rhs.end());
@@ -105,4 +111,21 @@ bool operator==(const StrVec & strv1, const StrVec & strv2)
 bool operator!=(const StrVec & strv1, const StrVec & strv2)
 {
 	return !(strv1 == strv2);
+}
+
+bool operator<(const StrVec & strv1, const StrVec & strv2)
+{
+	return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+bool operator<=(const StrVec & strv1, const StrVec & strv2)
+{
+	return !(strv1>strv2);
+}
+bool operator>(const StrVec & strv1, const StrVec & strv2)
+{
+	return strv2 < strv1;
+}
+bool operator>=(const StrVec & strv1, const StrVec & strv2)
+{
+	return !(strv1<strv2);
 }
