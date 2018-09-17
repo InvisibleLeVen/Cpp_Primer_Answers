@@ -173,8 +173,8 @@ void memfcn(Base &b) { b = *this; }
 * Prot_Derv
 * Derived_from_Public
 * Derived_from_Protected
-不合法：
 * Derived_from_Private
+不合法：
 
 ## [练习15.20](exercise15_20.cpp)
 
