@@ -73,7 +73,7 @@ T* end(const T (&arr)[N])
 > 编写一个 constexpr 模版，返回给定数组的大小。
 
 ```cpp
-template<typename T, typename N> constexpr
+template<typename T, size_t N> constexpr
 unsigned size(const T (&arr)[N])
 {
 	return N;
