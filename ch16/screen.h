@@ -28,7 +28,7 @@ public:
 		return os;
 	}
 
-	friend std::istream & operator>> (std::istream &is, Screen &  c)
+	friend std::istream & operator>> (std::istream &is, Screen<H, W> &  c)
 	{
 		char a;
 		is >> a;
