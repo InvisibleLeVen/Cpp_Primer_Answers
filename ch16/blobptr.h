@@ -99,7 +99,7 @@ template<typename T> bool operator==(const BlobPtr<T> &lhs, const BlobPtr<T> &rh
 	{
 		throw runtime_error("ptrs to different Blobs!");
 	}
-	return lhs.i == rhs.i;
+	return lhs.curr == rhs.curr;
 }
 
 template<typename T> bool operator< (const BlobPtr<T> &lhs, const BlobPtr<T> &rhs)
@@ -108,7 +108,7 @@ template<typename T> bool operator< (const BlobPtr<T> &lhs, const BlobPtr<T> &rh
 	{
 		throw runtime_error("ptrs to different Blobs!");
 	}
-	return lhs.i < rhs.i;
+	return lhs.curr < rhs.curr;
 }
 
 #endif // BLOBPTR_H
